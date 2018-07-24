@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two|Raleway');
+
+$main-color: #233b60;
+$secondary-color: #a4afbf;
+@mixin padmarg0 {
+    padding:0;
+    margin:0;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    20% { transform: translate(-1px, 0px) rotate(1deg); }
+    40% { transform: translate(1px, -1px) rotate(0deg); }
+    60% { transform: translate(-1px, 1px) rotate(-1deg); }
+    80% { transform: translate(1px, -1px) rotate(1deg); }
+    100% { transform: translate(-1px, 1px) rotate(0deg); }
+}
+
+@keyframes slide-left {
+    0% { 
+        opacity: 0;
+        margin-left: 20%;
+    }
+    100% {
+        opacity: 1;
+        margin-left: 0;
+    }
+}
+
+@keyframes slide-right {
+    0% { 
+        opacity: 0;
+        margin-right: 40%;
+    }
+    100% {
+        opacity: 1;
+        margin-right: 0;
+    }
+}
+
+@keyframes appear {
+    0% { opacity: 0; }
+    100% {opacity: 1; }
+}
+
+.slide-left {
+    animation: slide-left 1s;
+}
+
+.slide-right {
+    animation: slide-right 4s;
+}
+
+.hidden {
+    display: none;
+}
+
+.seethru {
+    opacity: 0;
+}
+
+.appear {
+    animation: appear 4s;
+}
+
+.show {
+    animation: appear 0.6s;
+}
+
+.opacity-quarter {
+    opacity: 0.25;
+}
+
+// GLOBAL
+body {
+    background: $main-color;
+    width: 100%;
+    @include padmarg0;
+}
+
+#wrapper {
+    background: #ddd;
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6vw;
+    display:grid;
+    grid-template-areas: 
+        "head head head head"
+        "ban ban ban ban"
+        "ban ban ban ban"
+        "one one one one"
+        "one one one one"
+        "tes tes tes tes"
+        "two two two two"
+        "gal gal gal gal"
+        "gal gal gal gal"
+        "ftr ftr ftr ftr"
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    color: #aaa;
+}
+
+// HEADER
+header {
+    background: $main-color;
+    color: white;
+    grid-area: head;
+    display: grid;
+    grid-template: "title nav nav nav";
+    align-items: center;
+    justify-content: space-around;
+    padding: 1% 0;
+
+    #title {
+        grid-area: title;
+        font-size: 2.4em;
+        font-family: 'Lobster Two', cursive;
+    }
+    #title:hover {
+        animation: shake 0.4s;
+    }
+
+    nav {
+        grid-area: nav;
+        grid-column: 2 / span 3;
+    
+        ul {
+            list-style: none;
+            display:flex;
+            justify-content: space-between;
+            text-transform: uppercase;
+
+            li a{
+                padding: 10px;
+            }
+        }
+    }
+}
+
+// BODY
+#banner {
+    grid-area: ban;
+    margin-bottom: 1%;
+    padding-bottom: 43%;
+    // img {
+    //     width:100%;
+    // }
+    // Parallax scrolling doesn't seem to be mobile responsive
+    // or maybe this specific pic is not good for parallax scroll
+    background-image: url('media/banner.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#ban-animate {
+    grid-column-start: ban-start;
+    grid-row-start: ban-start;
+    color: white;
+    font-size: 4vw;
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 100px;
+    z-index: 1;
+}
+
+#one {
+    grid-area: one;
+    width: 88%;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    #one-main {
+        width: 50%; 
+        h3 {
+            text-align: center;
+        }
+    }
+
+    video {
+        width: 40%;
+    }
+}
+
+#testimonials {
+    grid-area: tes;
+    justify-self: center;
+    text-align: center;
+    background-color: $secondary-color;
+    padding-bottom: 2%;
+    // background: url('https://media.giphy.com/media/95P1vO6r7rsk0/giphy.gif') no-repeat center;
+    // background-size: cover;
+    // color: white;
+    // font-family: arial;
+    // font-weight: bold;
+    // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    // padding: 15% 1%;
+    width: 70%;
+    margin: 2% 0;
+}
+
+#two {
+    grid-area: two;
+    justify-self: center;
+    width: 88%;
+    display: flex;
+    justify-content: space-around;
+
+    p {
+        margin: 2%;
+    }
+}
+
+#gallery {
+    grid-area: gal;
+    text-align: center;
+    justify-self: center;
+    background: $secondary-color;
+    width: 70%;
+    margin: 2% 0;
+    padding-bottom: 1%;
+
+    #gallery-inner {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 90%;
+            max-width: 768px;
+            max-height: 400px;
+        }
+
+        input {
+            background: transparent;
+            font-family: arial;
+            border-radius: 10px;
+            padding: 1%;
+            font-weight: 700;
+            width: 1%;
+        }
+        input:hover {
+            cursor: pointer;
+            background: lightgrey;
+            opacity: 0.5;
+        }
+        input:focus {
+            outline: none;
+        }
+    }
+
+    #gallery-mini {
+        display: flex;
+        justify-content: center; 
+
+        input {
+            width: 10%;
+            height: 100%;
+            max-width: 100px;
+            max-height: 100px;
+            margin: 1%;
+        }
+        input:hover {
+            opacity: 1;
+        }
+    }
+}
+
+// FOOTER
+footer {
+    white-space: nowrap;
+    font-size: 0.9em;
+    padding: 1% 0;
+    background: $main-color;
+    grid-area: ftr;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+
+    #social {
+        width: 40%;
+        text-align: center;
+        img {
+            max-height: 50px;
+            max-width: 50px;
+            width:10%;
+            margin: 0 1%;
+        }
+    }
+
+    #email {
+        color: white;
+        width: 60%;
+        display:flex;
+        justify-content: center;
+
+        form {
+            display: flex;
+
+            #email-field {
+                margin: 0 10px;
+                width: 110%;
+                font-size: 0.8em;
+            }
+
+            #email-submit {
+                width: 35%;
+                color: white;
+                font-size: 0.8em;
+                background: transparent;
+                border-radius: 10px;
+            }
+
+            #email-submit:hover {
+                cursor: pointer;
+                background: green;
+            }
+        }
+    }
+}
